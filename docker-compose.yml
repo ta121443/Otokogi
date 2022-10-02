@@ -11,6 +11,7 @@ services:
     command: bash -c "rm -f tmp/pids/server.pid && bundle exec rails s -p 4000 -b '0.0.0.0'"
     volumes:
       - .:/myapp
+      - gem_data:/usr/local/bundle
     ports:
       - "4000:4000"
     depends_on:
