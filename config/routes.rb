@@ -1,5 +1,10 @@
 Rails.application.routes.draw do
-  root "sessions#new"
-  resources :users
-  resources :sessions
+  root "static_pages#home"
+
+  scope "/:session_id" do 
+    resources :users
+    resources :sessions  
+  end
+
+
 end
