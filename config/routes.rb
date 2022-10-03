@@ -3,7 +3,7 @@ Rails.application.routes.draw do
 
   scope "/:session_id" do 
     resources :users
-    resources :sessions  
+    resources :sessions
   end
 
 
