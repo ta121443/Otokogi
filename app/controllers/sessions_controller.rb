@@ -1,6 +1,5 @@
 class SessionsController < ApplicationController
 
-  def index 
-    
+  def top    
   end
 end
