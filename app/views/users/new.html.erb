@@ -1,1 +1,20 @@
-new
+<h1 class="title">ユーザーの追加</h1>
+
+<div class="row">
+  <div class="col-sm-6 col-sm-offset-3">
+    <%= form_with(model: @user, local: true) do |f| %>
+      <%= render "shared/error_messages_html", object: f.object %>
+      <%= f.label :name, "ユーザー名（必須）" %>
+      <%= f.text_field :name %>
+      <%= f.label :group_id, "グループ名" %>
+      <%= f.collection_select :group_id, Group.all, :id, :name, include_blank: "選択してください"%>
+      <%= f.hidden_field :session_id, :value => params[:session_id] %>
+      <%= f.submit "ユーザーを追加する", class: "btn btn-primary btn-lg" %>
+    <% end %>
+  </div>
+</div>
+<div class="row">
+  <div class="col-md-4 col-md-offset-5 btn-back">
+    <%= link_to "戻る", top_path, class:"btn btn-primary btn-lg col-md-6 col-md-offset-3"%>
+  </div>
+</div>
