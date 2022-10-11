@@ -1,6 +1,13 @@
 class GroupsController < ApplicationController
+  def index 
+    @groups = Group.all
+    @nongroup = User.where("group_id IS NULL")
+  end
   def new 
     @group = Group.new
+    @users = User.all
+    @groups = Group.all
+    @nongroup = User.where("group_id = ?", nil)
   end
 
   def create 
