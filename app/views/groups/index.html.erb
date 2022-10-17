@@ -1,3 +1,4 @@
+<% provide(:title, "グループ一覧") %>
 <h1 class="title">グループ一覧</h1>
 
 <div class="row">
@@ -13,15 +14,21 @@
       <th scope="col" class="text-center">#</th>
       <th scope="col" class="text-center">グループ名</th>
       <th scope="col" class="text-center">所属人数</th>
+      <th scope="col" class="text-center"></th>
     </tr>
   </thead>
   <tbody>
     <% n = 1 %>
-    <% @groups.each do | group| %>
+    <% @groups.each do | group | %>
       <tr>
         <th scope="row" class="text-center"><%= n %></th>
         <td class="text-center"><%=group.name%></td>        
         <td class="text-center"><%=group.users.count%></td>
+        <td class="text-center">
+          <%= link_to "削除", "#{group.session_id}/groups/#{group.id}",
+              data: { confirm: "削除してもよろしいですか？", turbo_method: :delete } 
+          %>
+        </td>
       </tr>
       <% n += 1 %>
     <% end %>
@@ -29,6 +36,7 @@
         <th scope="row" class="text-center"><%= n %></th>
         <td class="text-center"> 所属なし </td>        
         <td class="text-center"><%=@nongroup.count%></td>
+        <td></td>
       </tr>
   </tbody>
 </table>

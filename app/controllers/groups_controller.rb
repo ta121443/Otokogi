@@ -3,6 +3,7 @@ class GroupsController < ApplicationController
     @groups = Group.all
     @nongroup = User.where("group_id IS NULL")
   end
+
   def new 
     @group = Group.new
     @users = User.all
@@ -17,8 +18,16 @@ class GroupsController < ApplicationController
       redirect_to top_path
     else
       render 'new'
+    end    
+  end
+
+  def destroy
+    Group.find(params[:id]).destroy
+    flash[:success] = "グループを削除しました"
+
+    respond_to do |format|
+      format.html { redirect_to top_path, notice: "削除してもよろしいですか？", status: :see_other }
     end
-    
   end
 
   private 

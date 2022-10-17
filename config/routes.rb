@@ -3,7 +3,7 @@ Rails.application.routes.draw do
 
   scope "/:session_id" do 
     resources :users
-    resources :groups
+    resources :groups, only: [:index, :new, :create, :destory]
 
     #Sessions
     get "/top", to: "sessions#top"
