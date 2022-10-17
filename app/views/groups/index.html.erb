@@ -25,9 +25,6 @@
         <td class="text-center"><%=group.name%></td>        
         <td class="text-center"><%=group.users.count%></td>
         <td class="text-center">
-          <%= link_to "削除", "#{group.session_id}/groups/#{group.id}",
-              data: { confirm: "削除してもよろしいですか？", turbo_method: :delete } 
-          %>
         </td>
       </tr>
       <% n += 1 %>
